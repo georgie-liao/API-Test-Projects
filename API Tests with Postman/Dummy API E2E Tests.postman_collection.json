@@ -7,73 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Create new record in database",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// Assertion 1 - Status Code check\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"// Assertion 2 - Response value check\r",
-							"pm.test(\"Check key-value pairs with response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"\r",
-							"    // Name check\r",
-							"pm.environment.set(\"variable_key\", \"variable_value\");\r",
-							"    pm.expect(jsonData.data.name).to.eql(\"Georgie\");\r",
-							"\r",
-							"    // Salary check\r",
-							"    pm.expect(jsonData.data.salary).to.eql(\"65124588\");\r",
-							"\r",
-							"    // Age check\r",
-							"    pm.expect(jsonData.data.age).to.eql(\"23\");\r",
-							"});\r",
-							"\r",
-							"// Set employee ID as enviroment variable\r",
-							"pm.test(\"Set employee ID as an enviroment variable\", function () {\r",
-							"    var jsonData = pm.response.json(); \r",
-							"\r",
-							"pm.environment.set(\"employeeID\", jsonData.data.id);\r",
-							"    })"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Georgie\",\r\n    \"salary\": \"65124588\",\r\n    \"age\": \"23\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/create",
-					"protocol": "https",
-					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Update an employee record",
 			"event": [
 				{
@@ -175,6 +108,72 @@
 						"v1",
 						"delete",
 						"{{employeeID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new record in database",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Assertion 1 - Status Code check\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Assertion 2 - Response value check\r",
+							"pm.test(\"Check key-value pairs with response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    // Name check\r",
+							"    pm.expect(jsonData.data.name).to.eql(\"Georgie\");\r",
+							"\r",
+							"    // Salary check\r",
+							"    pm.expect(jsonData.data.salary).to.eql(\"65124588\");\r",
+							"\r",
+							"    // Age check\r",
+							"    pm.expect(jsonData.data.age).to.eql(\"23\");\r",
+							"});\r",
+							"\r",
+							"// Set employee ID as enviroment variable\r",
+							"pm.test(\"Set employee ID as an enviroment variable\", function () {\r",
+							"    var jsonData = pm.response.json(); \r",
+							"\r",
+							"pm.environment.set(\"employeeID\", jsonData.data.id);\r",
+							"    })"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Georgie\",\r\n    \"salary\": \"65124588\",\r\n    \"age\": \"23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/create",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
 					]
 				}
 			},
